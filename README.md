@@ -39,8 +39,7 @@ Distributed Quotation Services/
 ├── girlsallowed/     # GirlsAllowed Quotation Service
 ├── broker/           # Broker for collecting quotations
 ├── client/           # REST client using OkHttp
-├── docker-compose.yml
-└── README.md
+└── docker-compose.yml
 ```
 
 ---
