@@ -1,0 +1,57 @@
+version: '3.6'
+
+services:
+  core:
+    build: ./core
+    container_name: core
+    networks:
+      - broker-network
+
+  broker:
+    build: ./broker
+    container_name: broker
+    ports:
+      - "8083:8083"
+    environment:
+      BROKER_ENV: broker
+    depends_on:
+      - core
+    networks:
+      - broker-network
+
+  auldfellas:
+    build: ./auldfellas
+    container_name: auldfellas
+    ports:
+      - "8080:8080"
+    depends_on:
+      - core
+      - broker
+    networks:
+      - broker-network
+
+  dodgygeezers:
+    build: ./dodgygeezers
+    container_name: dodgygeezers
+    ports:
+      - "8081:8081"
+    depends_on:
+      - core
+      - broker
+    networks:
+      - broker-network
+
+  girlsallowed:
+    build: ./girlsallowed
+    container_name: girlsallowed
+    ports:
+      - "8082:8082"
+    depends_on:
+      - core
+      - broker
+    networks:
+      - broker-network
+
+networks:
+  broker-network:
+    driver: bridge
